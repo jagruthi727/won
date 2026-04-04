@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <title>Profile</title>
+      <style>
+        body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+  radial-gradient(circle at 20% 30%, #1b263b,transparent),
+  radial-gradient(circle at 80% 70%,#0d1b2a,transparent),
+  #020617;
+  color: #E5E7EB;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* CONTAINER */
+
+.container {
+  width: 600px;
+}
+
+/* TITLE */
+
+h1 {
+  text-align: center;
+  background: linear-gradient(90deg,#22D3EE,#8B5CF6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* PROFILE CARD */
+
+.profile-card {
+  background: #1E293B;
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid #334155;
+  text-align: center;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #8B5CF6;
+}
+
+/* INFO */
+
+.info p {
+  margin: 5px 0;
+  color: #9CA3AF;
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stat-box {
+  background: #1E293B;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+/* BUTTONS */
+
+.buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button {
+  background: #8B5CF6;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #7C3AED;
+  box-shadow: 0 0 12px #8B5CF6;
+}
+      </style>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+        
+    </head>
+    <body>
+        <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-card">
+        <!-- USER INFO -->
+        <h2>Akshaya</h2>
+        <div class="info">
+        <p>Email: akshaya@email.com</p>
+        <p>Joined: Jan 2026</p>
+        </div>
+        <!-- STATS -->
+        <div class="stats">
+        <div class="stat-box">
+            <h3>25</h3>
+            <p>Total Quizzes</p>
+        </div>
+        <div class="stat-box">
+            <h3>95%</h3>
+            <p>Highest Score</p>
+        </div>
+        <div class="stat-box">
+            <h3>82%</h3>
+            <p>Average Score</p>
+        </div>
+        <div class="stat-box">
+            <h3>#12</h3>
+            <p>Rank</p>
+        </div>
+        </div>
+        <!-- BUTTONS -->
+        <div class="buttons">
+      <button onclick="editProfile()">Edit Profile</button>
+      <button onclick="changePassword()">Change Password</button>
+    </div>
+
+  </div>
+
+</div>
+<script>
+
+function editProfile() {
+  alert("Edit Profile clicked");
+}
+
+function changePassword() {
+  alert("Change Password clicked");
+}
+
+</script>
+    </body>
+</html>
