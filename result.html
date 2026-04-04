@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Result</title>
+  <style>
+    /* GLOBAL */
+body {
+  margin: 0;
+  font-family:'Poppins',sans-serif;
+  background:
+  radial-gradient(circle at 20% 30%, #1b263b,transparent),
+  radial-gradient(circle at 80% 70%,#0d1b2a,transparent),
+  #020617;
+  color: #E5E7EB;
+}
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 15px;
+  background: #14192f;
+  border-bottom: 1px solid #334155;
+}
+.logo { 
+  font-size: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg,#22D3EE,#8B5CF6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.nav-links a{
+text-decoration:none;
+color:white;
+font-size:16px;
+position:relative;
+}
+.nav-links a::after{
+content:"";
+position:absolute;
+width:0%;
+height:2px;
+left:0;
+bottom:-5px;
+background:#4cc9f0;
+transition:0.3s;
+}
+.nav-links a:hover::after{
+width:100%;
+}
+/* CONTAINER */
+.container {
+  text-align: center;
+  padding: 40px 20px;
+}
+/* RESULT CARD */
+.result-card {
+  background: #1E293B;
+  border-radius: 16px;
+  padding: 30px;
+  margin: auto;
+  max-width: 500px;
+  border: 1px solid #334155;
+}
+.score {
+  font-size: 40px;
+  color: #8B5CF6;
+  margin: 10px 0;
+  text-shadow: 0 0 5px #8B5CF6;
+}
+.accuracy {
+  color: #22D3EE;
+}
+.feedback {
+  color: #FACC15;
+  margin-top: 10px;
+}
+/* STATS */
+.stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.stat-box {
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px;
+  width: 150px;
+}
+.correct p {
+  color: #22C55E;
+}
+.wrong p {
+  color: #EF4444;
+}
+.time p {
+  color: #FACC15;
+}
+.buttons {
+  margin-top: 30px;
+}
+.btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.primary {
+  background: #8B5CF6;
+  color: white;
+}
+.primary:hover {
+  background: #7C3AED;
+  box-shadow: 0 0 10px #8B5CF6;
+}
+.secondary {
+  background: transparent;
+  border: 1px solid #22D3EE;
+  color: #22D3EE;
+}
+.secondary:hover {
+  background: #22D3EE;
+  color: #020617;
+}
+.leaderboard {
+  background: #22D3EE;
+  color: #020617;
+}
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #14192f;
+  color: #9CA3AF;
+  border-top: 1px solid #334155;
+  margin-top: 40px;
+}
+  </style>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">SkillRank</div>
+  <div class="nav-links">
+    <a href="#">Dashboard</a>
+    <a href="#">Leaderboard</a>
+    <a href="#">Profile</a>
+  </div>
+</div>
+
+<!-- RESULT CONTAINER -->
+<div class="container">
+
+  <!-- RESULT CARD -->
+  <div class="result-card">
+    <h1>Quiz Completed!</h1>
+
+    <div class="score">18 / 20</div>
+    <p class="accuracy">Accuracy: 90%</p>
+
+    <p class="feedback">Excellent! You're a top performer!</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+
+    <div class="stat-box">
+      <h3>Total Questions</h3>
+      <p>20</p>
+    </div>
+
+    <div class="stat-box correct">
+      <h3>Correct</h3>
+      <p>18</p>
+    </div>
+
+    <div class="stat-box wrong">
+      <h3>Wrong</h3>
+      <p>2</p>
+    </div>
+
+    <div class="stat-box time">
+      <h3>Time Taken</h3>
+      <p>5 min</p>
+    </div>
+  </div>
+
+
+
+  <!-- BUTTONS -->
+  <div class="buttons">
+    <button class="btn primary">Retake Quiz</button>
+    <button class="btn secondary">Dashboard</button>
+    <button class="btn leaderboard">Leaderboard</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 SkillRank | Contact | About
+</div>
+
+</body>
+</html>
