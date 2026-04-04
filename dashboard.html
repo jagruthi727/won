@@ -1,0 +1,206 @@
+<html>
+    <head> 
+        <title>Dashboard</title>
+    </head>
+  <style>
+    /* ===== GLOBAL ===== */
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at 20% 30%, #1b263b, transparent),
+    radial-gradient(circle at 80% 70%, #0d1b2a, transparent),
+#020617;
+  color: #E5E7EB;
+  display: flex;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #0F172A;
+  padding: 20px;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg,#22D3EE,#8B5CF6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.menu a {
+  display: block;
+  padding: 12px;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #E5E7EB;
+  border-radius: 8px;
+}
+
+.menu a:hover {
+  background: #1E293B;
+  color: #22D3EE;
+}
+
+.active {
+  background: #1E293B;
+  border-left: 4px solid #8B5CF6;
+}
+
+/* ===== MAIN CONTENT ===== */
+
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+/* HEADER */
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header p {
+  color: #9CA3AF;
+}
+
+/* ===== STATS ===== */
+
+.stats {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  flex: 1;
+  background: #1E293B;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #334155;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card p {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+/* ===== CTA ===== */
+
+.cta {
+  margin-top: 30px;
+  background: #1E293B;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.cta h2 {
+  margin-bottom: 10px;
+}
+
+.cta button {
+  background: #8B5CF6;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cta button:hover {
+  background: #7C3AED;
+  box-shadow: 0 0 12px #8B5CF6;
+}
+
+/* ===== RECENT ACTIVITY ===== */
+
+.activity {
+  margin-top: 30px;
+  background: #1E293B;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #334155;
+}
+
+.activity p {
+  margin: 10px 0;
+}
+  </style>
+    <body>
+        <!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo">SkillRank</div>
+
+  <div class="menu">
+    <a href="#" class="active">Dashboard</a>
+    <a href="#">Take Quiz</a>
+    <a href="#">Leaderboard</a>
+    <a href="#">Profile</a>
+    <a href="#">Performance</a>
+    <a href="login.html">Logout</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Welcome back, Akshaya </h1>
+    <p>Track your progress and keep competing!</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="card">
+      <h3>Total Quizzes</h3>
+      <p>25</p>
+    </div>
+
+    <div class="card">
+      <h3>Highest Score</h3>
+      <p>95%</p>
+    </div>
+
+    <div class="card">
+      <h3>Average Score</h3>
+      <p>82%</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Ready for a new challenge?</h2>
+    <p>Start a new quiz and improve your rank!</p>
+    <button>Start New Quiz</button>
+  </div>
+
+  <!-- ACTIVITY -->
+  <div class="activity">
+    <h3>Recent Activity</h3>
+    <p>✔ Completed HTML Quiz – Score: 85%</p>
+    <p>✔ Attempted JS Quiz – Score: 72%</p>
+    <p>✔ Ranked #12 in Weekly Leaderboard</p>
+  </div>
+</div>
+
+</body>
+</html>
