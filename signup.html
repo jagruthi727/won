@@ -1,356 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SkillRank - Sign Up</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SkillRank – Leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --cyan:#22D3EE;
+  --purple:#8B5CF6;
+  --purple-mid:#7C3AED;
+  --bg:#162032;
+  --surface:#1a2740;
+  --surface2:#1e2d47;
+  --border:#1E293B;
+  --text:#E5E7EB;
+  --muted:#64748B;
 }
 
 body{
-
-background:
-radial-gradient(circle at 20% 30%, #1b263b, transparent),
-radial-gradient(circle at 80% 70%, #0d1b2a, transparent),
-#020617;
-
-color:white;
-
-min-height:100vh;
-
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
+/* ── BACKGROUND MESH ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 30%,rgba(22,38,70,.5),transparent),
+    radial-gradient(ellipse 60% 60% at 80% 70%,rgba(15,25,55,.4),transparent);
+  pointer-events:none;
+}
 
-/* NAVBAR */
-
+/* ── NAVBAR ── */
 .navbar{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px 60px;
-
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-
-border-radius:40px;
-margin:20px;
-
+  position:sticky;top:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 48px;
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:50px;
+  margin:18px 20px;
+  border:1px solid rgba(255,255,255,0.12);
 }
-
 .logo{
-
-font-size:24px;
-font-weight:600;
-color:#4cc9f0;
-
+  font-size:1.3rem;font-weight:700;letter-spacing:-.5px;
 }
-
-.logo span{
-
-color:#9d4edd;
-
-}
-
-.nav-links{
-
-list-style:none;
-display:flex;
-
-}
-
-.nav-links li{
-
-margin-left:30px;
-
-}
-
+.logo .skill{color:var(--cyan)}
+.logo .rank{color:var(--purple)}
+.nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{
+  text-decoration:none;color:rgba(255,255,255,0.9);
+  font-size:.95rem;font-weight:400;
+  transition:color .2s;
+}
+.nav-links a:hover{color:#fff}
+.nav-links a.active{color:#fff}
 
-text-decoration:none;
-color:white;
-font-size:16px;
-position:relative;
+/* ── HERO ANIMATION ── */
+@keyframes heroFadeSlide{
+  0%{opacity:0;transform:translateY(28px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+.hero-eyebrow{animation:heroFadeSlide 0.9s cubic-bezier(.22,1,.36,1) both;animation-delay:.1s}
+.hero h1{animation:heroFadeSlide 1s cubic-bezier(.22,1,.36,1) both;animation-delay:.3s}
+.hero p{animation:heroFadeSlide 1s cubic-bezier(.22,1,.36,1) both;animation-delay:.55s}
 
+/* ── PAGE WRAPPER ── */
+.page{position:relative;z-index:1;padding:0 24px 60px}
+
+/* ── HERO SECTION ── */
+.hero{
+  text-align:center;
+  padding:56px 20px 40px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(139,92,246,.12);
+  border:1px solid rgba(139,92,246,.25);
+  border-radius:99px;padding:5px 16px;
+  font-size:.75rem;font-weight:600;color:var(--purple);
+  letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3rem);font-weight:800;
+  background:linear-gradient(90deg,var(--cyan) 20%,var(--purple) 80%);
+  -webkit-background-clip:text;color:transparent;
+  line-height:1.15;letter-spacing:-.5px;
+}
+.hero p{color:var(--muted);font-size:.95rem;margin-top:10px}
+
+
+
+/* ── TABS ── */
+.tabs-wrap{
+  display:flex;justify-content:center;
+  background:var(--surface2);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:14px;
+  padding:5px;
+  width:fit-content;
+  margin:36px auto 28px;
+  gap:4px;
+}
+.tab{
+  background:none;border:none;
+  color:var(--muted);
+  padding:9px 28px;border-radius:10px;
+  font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:500;
+  cursor:pointer;transition:all .22s;
+}
+.tab.active{
+  background:linear-gradient(135deg,var(--purple-mid),var(--cyan));
+  color:#fff;box-shadow:0 4px 16px rgba(139,92,246,.4);
+}
+.tab:not(.active):hover{color:#fff;background:rgba(255,255,255,.06)}
+
+/* ── FILTERS ── */
+.filters{
+  display:flex;justify-content:center;gap:12px;
+  flex-wrap:wrap;margin-bottom:36px;
+}
+.filters input,.filters select{
+  padding:10px 18px;
+  background:var(--surface2);
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--text);border-radius:10px;
+  font-family:'Poppins',sans-serif;font-size:.88rem;
+  outline:none;transition:border-color .2s,box-shadow .2s;
+  min-width:200px;
+}
+.filters input:focus,.filters select:focus{
+  border-color:var(--purple);
+  box-shadow:0 0 0 3px rgba(139,92,246,.15);
+}
+.filters input::placeholder{color:var(--muted)}
+.filters select option{background:var(--surface2)}
+
+/* ── TOP 3 PODIUM ── */
+.podium-section{
+  display:flex;justify-content:center;align-items:flex-end;
+  gap:16px;margin-bottom:40px;
+  flex-wrap:wrap;
+}
+.podium-card{
+  background:#1e2d47;
+  border-radius:20px;
+  padding:24px 20px;
+  text-align:center;
+  width:150px;
+  position:relative;
+  transition:transform .25s,box-shadow .25s;
+  border:1px solid rgba(255,255,255,.07);
+  animation:fadeUp .5s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.podium-card:hover{transform:translateY(-8px)}
+
+.podium-card.gold{
+  border-color:rgba(250,204,21,.25);
+  box-shadow:0 0 32px rgba(250,204,21,.18),0 8px 24px rgba(0,0,0,.4);
+  transform:translateY(-12px);
+  background:linear-gradient(160deg,rgba(250,204,21,.05),var(--surface2));
+}
+.podium-card.gold:hover{transform:translateY(-20px)}
+.podium-card.silver{
+  border-color:rgba(156,163,175,.2);
+  box-shadow:0 0 20px rgba(156,163,175,.12);
+}
+.podium-card.bronze{
+  border-color:rgba(198,77,29,.2);
+  box-shadow:0 0 20px rgba(198,77,29,.12);
 }
 
-.nav-links a::after{
-
-content:"";
-position:absolute;
-
-width:0%;
-height:2px;
-
-left:0;
-bottom:-5px;
-
-background:#4cc9f0;
-
-transition:0.3s;
-
+.medal{font-size:2.2rem;display:block;margin-bottom:10px}
+.podium-name{font-weight:700;font-size:1rem;margin-bottom:4px}
+.podium-score{
+  font-size:1.6rem;font-weight:800;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;color:transparent;
+}
+.podium-quizzes{font-size:.72rem;color:var(--muted);margin-top:4px;display:block}
+.podium-label{
+  position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
+  background:var(--surface);border:1px solid rgba(255,255,255,.08);
+  border-radius:99px;padding:2px 10px;
+  font-size:.65rem;font-weight:600;color:var(--muted);
+  white-space:nowrap;
 }
 
-.nav-links a:hover::after{
+/* ── TABLE ── */
+.table-wrap{
+  max-width:860px;margin:0 auto;
+  background:#1e2d47;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,.3);
+}
+table{width:100%;border-collapse:collapse}
+thead{background:var(--surface)}
+th{
+  padding:14px 20px;
+  font-size:.72rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.1em;
+  color:var(--cyan);text-align:center;
+}
+th:first-child{text-align:left;padding-left:28px}
+th:nth-child(2){text-align:left}
+td{
+  padding:14px 20px;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:.88rem;
+  transition:background .15s;
+}
+td:first-child{text-align:left;padding-left:28px}
+td:nth-child(2){text-align:left;font-weight:600}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.03)}
 
-width:100%;
+.rank-cell{font-weight:700;font-size:1rem;color:#fff}
+.rank-num{color:var(--muted)}
+.score-td{
+  font-weight:700;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;color:transparent;
+}
+.avg-bar-wrap{display:flex;align-items:center;gap:8px;justify-content:center}
+.avg-bar{
+  width:60px;height:5px;border-radius:99px;
+  background:rgba(255,255,255,.08);overflow:hidden;
+}
+.avg-bar-fill{height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));}
+.avg-val{font-size:.78rem;color:var(--muted)}
 
+.cat-badge{
+  display:inline-block;padding:3px 12px;
+  border-radius:99px;font-size:.7rem;font-weight:600;
+}
+.cat-Programming{background:rgba(139,92,246,.15);color:#a78bfa}
+.cat-Aptitude{background:rgba(34,211,238,.12);color:var(--cyan)}
+.cat-Mathematics{background:rgba(251,191,36,.12);color:#fbbf24}
+.cat-GeneralKnowledge,.cat-General{background:rgba(52,211,153,.12);color:#34d399}
+
+.no-results{
+  text-align:center;padding:48px;color:var(--muted);
+  font-size:.9rem;
 }
 
-
-/* SIGNUP CONTAINER */
-
-.signup-container{
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-min-height:75vh;
-
+/* ── FOOTER ── */
+.footer{
+  border-top:1px solid rgba(255,255,255,.06);
+  margin-top:60px;padding:24px;
+  text-align:center;color:var(--muted);font-size:.78rem;
 }
-
-
-/* SIGNUP CARD */
-
-.signup-card{
-
-width:430px;
-
-padding:40px;
-
-border-radius:25px;
-
-background:rgba(255,255,255,0.08);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,0.15);
-
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
-
-text-align:center;
-
-animation:fadeIn 1s ease;
-
-}
-
-.signup-card h2{
-
-margin-bottom:25px;
-font-weight:500;
-
-}
-
-
-/* INPUT FIELDS */
-
-.input-group input{
-
-width:100%;
-
-padding:14px;
-
-margin-bottom:18px;
-
-border-radius:12px;
-
-border:none;
-
-background:rgba(255,255,255,0.08);
-
-color:white;
-
-outline:none;
-
-font-size:15px;
-
-}
-
-.input-group input:focus{
-
-border:1px solid #4cc9f0;
-
-box-shadow:0 0 8px rgba(76,201,240,0.6);
-
-}
-
-
-/* REGISTER BUTTON */
-
-.register-btn{
-
-width:170px;
-
-padding:12px;
-
-border:none;
-
-border-radius:30px;
-
-background:linear-gradient(135deg,#6a5acd,#9d4edd);
-
-color:white;
-
-font-size:16px;
-
-cursor:pointer;
-
-transition:0.3s;
-
-margin-top:10px;
-
-}
-
-.register-btn:hover{
-
-transform:translateY(-3px);
-
-box-shadow:0 10px 20px rgba(0,0,0,0.5);
-
-}
-
-
-/* LOGIN LINK */
-
-.login-link{
-
-margin-top:20px;
-
-color:#cbd5e1;
-
-}
-
-.login-link a{
-
-color:#4cc9f0;
-text-decoration:none;
-
-}
-
-.login-link a:hover{
-
-color:#9d4edd;
-
-}
-
-
-/* FOOTER */
-
-footer{
-
-margin-top:40px;
-
-padding:20px;
-
-text-align:center;
-
-color:#94a3b8;
-
-border-top:1px solid rgba(255,255,255,0.1);
-
-}
-
-
-/* ANIMATION */
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
+.footer span{
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;color:transparent;font-weight:600;
 }
 </style>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
 
 <!-- NAVBAR -->
-
 <nav class="navbar">
-
-<div class="logo">
-Skill<span>Rank</span>
-</div>
-
-<ul class="nav-links">
-
-<li><a href="home.html">Home</a></li>
-<li><a href="login.html">Login</a></li>
-<li><a href="signup.html">SignUp</a></li>
-<li><a href="#">Leaderboard</a></li>
-<li><a href="#">About</a></li>
-
-</ul>
-
+  <div class="logo"><span class="skill">Skill</span><span class="rank">Rank</span></div>
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="signup.html">Sign Up</a></li>
+    <li><a href="leaderboard.html" class="active">Leaderboard</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
 </nav>
 
+<div class="page">
 
-<!-- SIGNUP SECTION -->
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">🏆 Live Rankings</div>
+    <h1>Global Leaderboard</h1>
+    <p>See how you rank against other students worldwide</p>
 
-<div class="signup-container">
+  </div>
 
-<div class="signup-card">
+  <!-- TABS -->
+  <div class="tabs-wrap">
+    <button class="tab active" data-tab="overall">Overall</button>
+    <button class="tab" data-tab="weekly">Weekly</button>
+    <button class="tab" data-tab="daily">Daily</button>
+  </div>
 
-<h2>Create Account</h2>
+  <!-- FILTERS -->
+  <div class="filters">
+    <input type="text" id="search" placeholder="🔍  Search username…"/>
+    <select id="category">
+      <option value="all">All Categories</option>
+      <option value="Programming">Programming</option>
+      <option value="Aptitude">Aptitude</option>
+      <option value="Mathematics">Mathematics</option>
+      <option value="General Knowledge">General Knowledge</option>
+    </select>
+  </div>
 
-<form>
+  <!-- PODIUM -->
+  <div class="podium-section" id="top3"></div>
 
-<div class="input-group">
-<input type="text" placeholder="Username" required>
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Username</th>
+          <th>Score</th>
+          <th>Quizzes</th>
+          <th>Avg Score</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
 </div>
-
-<div class="input-group">
-<input type="email" placeholder="Email" required>
-</div>
-
-<div class="input-group">
-<input type="password" placeholder="Password" required>
-</div>
-
-<div class="input-group">
-<input type="password" placeholder="Confirm Password" required>
-</div>
-
-<button class="register-btn">Register</button>
-
-</form>
-
-<p class="login-link">
-Already have an account ?
-<a href="login.html">Login</a>
-</p>
-
-</div>
-
-</div>
-
 
 <!-- FOOTER -->
+<div class="footer">© 2026 <span>SkillRank</span> · Built for Competitive Learning</div>
 
-<footer>
+<script>
+const DATA={
+  overall:[
+    {username:'Alex',  total_score:980,quizzes_taken:25,avg_score:98,category:'Programming'},
+    {username:'Sam',   total_score:950,quizzes_taken:22,avg_score:95,category:'Aptitude'},
+    {username:'Mia',   total_score:920,quizzes_taken:20,avg_score:92,category:'Mathematics'},
+    {username:'John',  total_score:890,quizzes_taken:18,avg_score:89,category:'Programming'},
+    {username:'Priya', total_score:870,quizzes_taken:17,avg_score:87,category:'Aptitude'},
+    {username:'Ravi',  total_score:850,quizzes_taken:16,avg_score:85,category:'Mathematics'},
+    {username:'Sneha', total_score:830,quizzes_taken:15,avg_score:83,category:'General Knowledge'},
+    {username:'Arjun', total_score:810,quizzes_taken:14,avg_score:81,category:'Programming'},
+    {username:'Divya', total_score:790,quizzes_taken:13,avg_score:79,category:'Aptitude'},
+    {username:'Karan', total_score:770,quizzes_taken:12,avg_score:77,category:'Mathematics'},
+  ],
+  weekly:[
+    {username:'Priya', total_score:320,quizzes_taken:8, avg_score:92,category:'Aptitude'},
+    {username:'Alex',  total_score:295,quizzes_taken:7, avg_score:88,category:'Programming'},
+    {username:'Sneha', total_score:270,quizzes_taken:6, avg_score:85,category:'General Knowledge'},
+    {username:'Ravi',  total_score:250,quizzes_taken:5, avg_score:83,category:'Mathematics'},
+    {username:'Mia',   total_score:230,quizzes_taken:5, avg_score:80,category:'Mathematics'},
+    {username:'John',  total_score:210,quizzes_taken:4, avg_score:78,category:'Programming'},
+    {username:'Karan', total_score:190,quizzes_taken:4, avg_score:76,category:'Mathematics'},
+  ],
+  daily:[
+    {username:'Arjun', total_score:95,quizzes_taken:2,avg_score:95,category:'Programming'},
+    {username:'Divya', total_score:88,quizzes_taken:2,avg_score:88,category:'Aptitude'},
+    {username:'Sam',   total_score:82,quizzes_taken:1,avg_score:82,category:'Aptitude'},
+    {username:'Sneha', total_score:79,quizzes_taken:1,avg_score:79,category:'General Knowledge'},
+  ]
+};
 
-<p>© 2026 SkillRank | Built for Competitive Learning</p>
+let curTab='overall',curCat='all',curSearch='',timer=null;
 
-</footer>
+function filtered(){
+  let d=[...DATA[curTab]];
+  if(curCat!=='all') d=d.filter(u=>u.category===curCat);
+  if(curSearch){const q=curSearch.toLowerCase();d=d.filter(u=>u.username.toLowerCase().includes(q));}
+  return d;
+}
 
+function renderTop3(){
+  const el=document.getElementById('top3');
+  const d=filtered();
+  if(!d.length){el.innerHTML='';return;}
+  // order: silver (2nd), gold (1st), bronze (3rd)
+  const configs=[
+    {data:d[1],cls:'silver',medal:'🥈',label:'2nd Place'},
+    {data:d[0],cls:'gold',  medal:'🥇',label:'1st Place'},
+    {data:d[2],cls:'bronze',medal:'🥉',label:'3rd Place'},
+  ];
+  el.innerHTML=configs.map(({data:u,cls,medal,label},i)=>u?`
+    <div class="podium-card ${cls}" style="animation-delay:${i*.1}s">
+      <span class="medal">${medal}</span>
+      <div class="podium-name">${u.username}</div>
+      <div class="podium-score">${u.total_score}</div>
+      <span class="podium-quizzes">${u.quizzes_taken} quizzes · avg ${u.avg_score}%</span>
+      <div class="podium-label">${label}</div>
+    </div>`:'').join('');
+}
+
+function renderTable(){
+  const tb=document.getElementById('tableBody');
+  const d=filtered();
+  const medals=['🥇','🥈','🥉'];
+  if(!d.length){
+    tb.innerHTML=`<tr><td colspan="6"><div class="no-results">No results found. Try a different filter.</div></td></tr>`;
+    return;
+  }
+  tb.innerHTML=d.map((u,i)=>{
+    const rankCell=i<3
+      ?`<span class="rank-cell">${medals[i]}</span>`
+      :`<span class="rank-num">#${i+1}</span>`;
+    const catKey=u.category.replace(/\s/g,'');
+    const fillW=Math.round(u.avg_score);
+    return`<tr>
+      <td>${rankCell}</td>
+      <td>${u.username}</td>
+      <td class="score-td">${u.total_score}</td>
+      <td style="color:var(--muted)">${u.quizzes_taken}</td>
+      <td>
+        <div class="avg-bar-wrap">
+          <div class="avg-bar"><div class="avg-bar-fill" style="width:${fillW}%"></div></div>
+          <span class="avg-val">${u.avg_score}%</span>
+        </div>
+      </td>
+      <td><span class="cat-badge cat-${catKey}">${u.category}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function refresh(){renderTop3();renderTable();}
+
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');curTab=btn.dataset.tab;refresh();
+  });
+});
+document.getElementById('search').addEventListener('input',e=>{
+  clearTimeout(timer);timer=setTimeout(()=>{curSearch=e.target.value.trim();refresh();},300);
+});
+document.getElementById('category').addEventListener('change',e=>{curCat=e.target.value;refresh();});
+
+refresh();
+</script>
 </body>
 </html>
